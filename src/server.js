@@ -1,9 +1,15 @@
-const express = require('express') // import salaries of express
-const app = express(); // like create a new class 
-const port = 4040; // route to page web
 
+import express from 'express';
+import configViewEngine from './configs/viewEngine';
+
+require('dotenv').config() // to use dotenv
+const app = express(); // like create a new class 
+
+const port = process.env.PORT || 4040; // route to page web
+configViewEngine(app);
 app.get('/', (req, res) => { // request and response
-    res.send('Alex SanderIII, Hello World!') // to return the request
+
+    res.render('index.ejs')  // to return the request
 })
 // app.get('/theanh', (req, res) => {
 //     res.send('The Anh 26!')
